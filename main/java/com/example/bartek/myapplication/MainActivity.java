@@ -6,14 +6,14 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GLSurfaceView mGLView;
+    private GLSurfaceView myGLView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mGLView = new MyGLSurfaceView(this);
-        setContentView(mGLView);
+        myGLView = new MyGLSurfaceView(this);
+        setContentView(myGLView);
 
     }
 }
