@@ -14,6 +14,5 @@ public class MainActivity extends AppCompatActivity {
 
         mGLView = new MyGLSurfaceView(this);
         setContentView(mGLView);
-
     }
 }

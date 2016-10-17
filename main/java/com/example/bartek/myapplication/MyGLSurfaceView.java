@@ -7,7 +7,6 @@ import android.opengl.GLSurfaceView;
  * Created by Bartek on 2016-10-13.
  */
 public class MyGLSurfaceView extends GLSurfaceView {
-
     private final MyGLRenderer mRenderer;
     public MyGLSurfaceView(Context context) {
         super(context);
