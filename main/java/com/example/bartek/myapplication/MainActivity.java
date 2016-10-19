@@ -12,8 +12,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mGLView = new MyGLSurfaceView(this);
-        setContentView(mGLView);
+        myGLView = new MyGLSurfaceView(this);
+        setContentView(myGLView);
 
         myGLView = new MyGLSurfaceView(this);
         setContentView(myGLView);
