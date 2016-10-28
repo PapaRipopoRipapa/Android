@@ -16,7 +16,7 @@ public class MainMenu extends Activity
     {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.main);
+        setContentView(R.layout.main_menu);
     }
 
     @Override

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <ImageView
         android:id="@+id/splashScreenImage"
-        android:src="@drawable/kazachstan"
+        android:src="@drawable/splashscreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <TextView
