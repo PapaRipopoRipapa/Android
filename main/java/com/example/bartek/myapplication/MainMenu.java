@@ -3,7 +3,11 @@ package com.example.bartek.myapplication;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
+import android.view.View;
+
 
 /**
  * Created by Bartek on 2016-10-27.
@@ -17,6 +21,31 @@ public class MainMenu extends Activity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main_menu);
+
+        ImageButton startButton = (ImageButton) findViewById(R.id.startButton);
+        ImageButton settingsButon = (ImageButton) findViewById(R.id.settingsButton);
+        ImageButton exitButton = (ImageButton) findViewById(R.id.exitButton);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+
+            }});
+
+        settingsButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settings = new Intent(MainMenu.this, Settings.class);
+                MainMenu.this.startActivity(settings);
+            }
+        });
+
+        exitButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                onBackPressed();
+            }
+        });
     }
 
     @Override

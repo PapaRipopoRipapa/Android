@@ -29,4 +29,6 @@ public class WelcomeActivity extends Activity
 
         new Handler().postDelayed(mainThread, Engine.GAME_THREAD_DELAY);
     }
+
+    public void onBackPressed(){};
 }
