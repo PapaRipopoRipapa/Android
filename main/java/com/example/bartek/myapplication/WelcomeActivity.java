@@ -9,13 +9,16 @@ import android.os.Handler;
  * Created by Bartek on 2016-10-27.
  */
 
-public class WelcomeActivity extends Activity{
-    protected void onCreate(Bundle savedInstanceState) {
+public class WelcomeActivity extends Activity
+{
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.splashscreen);
 
-        Thread mainThread = new Thread() {
+        Thread mainThread = new Thread()
+        {
             public void run(){
                 Intent mainMenu = new Intent(WelcomeActivity.this, MainMenu.class);
                 WelcomeActivity.this.startActivity(mainMenu);
