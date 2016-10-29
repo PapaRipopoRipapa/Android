@@ -1,13 +1,13 @@
 package com.example.bartek.myapplication;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 
 /**
  * Created by Bartek on 2016-10-29.
  */
 
-public class Settings extends PreferenceActivity
+public class Settings extends Activity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

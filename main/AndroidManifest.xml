@@ -16,13 +16,19 @@
             android:name=".MainMenu"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".WelcomeActivity"
+        <activity
+            android:name=".WelcomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Settings"
+            android:screenOrientation="portrait">
+        </activity>
+        <service android:name=".Music" />
     </application>
 
 </manifest>
