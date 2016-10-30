@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Settings"
+    android:key="settings">
+    <CheckBoxPreference
+        android:key="music_settings"
+        android:title="Music"
+        android:defaultValue="true"
+        android:summary="Enable background music" />
+    <CheckBoxPreference
+        android:key="exit_alert_settings"
+        android:title="Exit alert"
+        android:defaultValue="true"
+        android:summary="Ask if you want to exit" />
 </PreferenceScreen>

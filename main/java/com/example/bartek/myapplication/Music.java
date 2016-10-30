@@ -12,7 +12,6 @@ import android.os.IBinder;
 
 public class Music extends Service
 {
-    public static boolean isRunning = false;
     public MediaPlayer player;
 
     @Override
@@ -46,7 +45,6 @@ public class Music extends Service
         super.onDestroy();
         player.stop();
         player.release();
-        isRunning = false;
     }
 
     @Override
@@ -55,13 +53,11 @@ public class Music extends Service
         try
         {
             player.start();
-            isRunning = true;
         } catch (Exception e)
         {
-            isRunning = false;
             player.stop();
         }
-        return super.onStartCommand(intent, flags, startId);
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -69,17 +65,13 @@ public class Music extends Service
     {
         super.onLowMemory();
         player.stop();
-        isRunning = false;
     }
+
+
 
     @Override
     public boolean onUnbind(Intent intent)
     {
         return super.onUnbind(intent);
-    }
-
-    public void onStop()
-    {
-
     }
 }

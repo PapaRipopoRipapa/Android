@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ImageButton;
 import android.view.View;
 
@@ -13,37 +15,26 @@ import android.view.View;
  * Created by Bartek on 2016-10-27.
  */
 
-public class MainMenu extends Activity
-{
+public class MainMenu extends Activity {
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main_menu);
 
-        Engine.musicThread = new Thread() {
-            public void run()
-            {
-                Intent intent = new Intent(getApplicationContext(), Music.class);
-                startService(intent);
-                Engine.context = getApplicationContext();
-            }
-        };
-
-        Engine.musicThread.start();
-
-        Engine engine = new Engine();
+        Intent intent = new Intent(getApplicationContext(), Music.class);
+        startService(intent);
 
         ImageButton startButton = (ImageButton) findViewById(R.id.startButton);
         ImageButton settingsButon = (ImageButton) findViewById(R.id.settingsButton);
         ImageButton exitButton = (ImageButton) findViewById(R.id.exitButton);
 
         startButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-
-            }});
+            public void onClick(View v) {
+                Intent startGame = new Intent(getApplicationContext(), MainActivity.class);
+                MainMenu.this.startActivity(startGame);
+            }
+        });
 
         settingsButon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,19 +44,38 @@ public class MainMenu extends Activity
             }
         });
 
-        exitButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                onBackPressed();
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                exit();
             }
         });
+    }
+
+    public void exit()
+    {
+        if(isExitAlertEnabled()) {
+            AlertDialog exitAlert = createExitAlert();
+            exitAlert.show();
+        }
+        else {
+            killApplicationProcess();
+        }
+    }
+
+    private boolean isExitAlertEnabled() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        return preferences.getBoolean("exit_alert_settings", true);
+    }
+
+    private void killApplicationProcess() {
+        int myPid = android.os.Process.myPid();
+        android.os.Process.killProcess(myPid);
     }
 
     @Override
     public void onBackPressed()
     {
-        AlertDialog exitAlert = createExitAlert();
-        exitAlert.show();
+        exit();
     }
 
     private AlertDialog createExitAlert()
@@ -79,7 +89,7 @@ public class MainMenu extends Activity
             {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    finish();
+                    killApplicationProcess();
             }
         });
         exitAlertDialogBuilder.setNegativeButton("No",
@@ -94,5 +104,19 @@ public class MainMenu extends Activity
         AlertDialog exitAlertDialog = exitAlertDialogBuilder.create();
 
         return exitAlertDialog;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopService(new Intent(getBaseContext(),
+                Music.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startService(new Intent(getBaseContext(),
+                Music.class));
     }
 }
