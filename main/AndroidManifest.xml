@@ -28,7 +28,7 @@
             android:name=".Settings"
             android:screenOrientation="portrait">
         </activity>
-        <service android:name=".Music" />
+        <service android:name=".MusicManager" />
     </application>
 
 </manifest>

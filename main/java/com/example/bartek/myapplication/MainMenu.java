@@ -22,11 +22,8 @@ public class MainMenu extends Activity {
 
         setContentView(R.layout.main_menu);
 
-        Intent intent = new Intent(getApplicationContext(), Music.class);
-
-        if (isMusicEnabled()){
-            startService(intent);
-        }
+        Intent intent = new Intent(getApplicationContext(), MusicManager.class);
+        startService(intent);
 
         ImageButton startButton = (ImageButton) findViewById(R.id.startButton);
         ImageButton settingsButon = (ImageButton) findViewById(R.id.settingsButton);
@@ -112,20 +109,10 @@ public class MainMenu extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-//        stopService(new Intent(getBaseContext(),
-//                Music.class));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        if (isMusicEnabled()) {
-//            startService(new Intent(getBaseContext(), Music.class));
-//        }
-    }
-
-    private boolean isMusicEnabled() {
-        SharedPreferences musicPreference = PreferenceManager.getDefaultSharedPreferences(this);
-        return musicPreference.getBoolean("music_settings", true);
     }
 }
