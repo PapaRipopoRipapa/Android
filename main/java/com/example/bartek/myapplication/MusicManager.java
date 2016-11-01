@@ -1,13 +1,11 @@
 package com.example.bartek.myapplication;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 /**
  * Created by Bartek on 2016-10-29.
@@ -19,7 +17,7 @@ public class MusicManager
 {
     private boolean isRunning = false;
     private boolean isMusicEnabled;
-    public MediaPlayer player;
+    private MediaPlayer player;
 
     @Override
     public void onCreate()
