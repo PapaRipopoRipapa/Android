@@ -22,8 +22,9 @@ public class MainMenu extends Activity {
 
         setContentView(R.layout.main_menu);
 
-        if (isMusicEnabled()) {
-            Intent intent = new Intent(getApplicationContext(), Music.class);
+        Intent intent = new Intent(getApplicationContext(), Music.class);
+
+        if (isMusicEnabled()){
             startService(intent);
         }
 
@@ -111,16 +112,16 @@ public class MainMenu extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        stopService(new Intent(getBaseContext(),
-                Music.class));
+//        stopService(new Intent(getBaseContext(),
+//                Music.class));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (isMusicEnabled()) {
-            startService(new Intent(getBaseContext(), Music.class));
-        }
+//        if (isMusicEnabled()) {
+//            startService(new Intent(getBaseContext(), Music.class));
+//        }
     }
 
     private boolean isMusicEnabled() {
